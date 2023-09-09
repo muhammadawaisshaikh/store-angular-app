@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_BASE_URL: 'https://fakestoreapi.com',
+  AUTH_BASE_URL: 'http://demo1416688.mockable.io'
 };
 
 /*
