@@ -1,2 +1,3 @@
-# store-angular-app
-Test Application along with State Management and Api Integration including unit tested codebase
+# StoreAngularApp
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
