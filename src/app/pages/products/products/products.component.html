@@ -12,7 +12,7 @@
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="center">
-        <div fxFlex="25%" *ngFor="let item of data">
+        <div fxFlex.lg="25" fxFlex.md="50" fxFlex.xs="100" *ngFor="let item of data">
             <mat-card class="product-card">
                 <mat-card-header>
                     <div mat-card-avatar class="product-header-image"></div>
