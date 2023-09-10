@@ -2,11 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './auth.model';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  isAuthenticated : boolean = false;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -15,7 +18,8 @@ export class AuthService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   /**
@@ -44,5 +48,50 @@ export class AuthService {
   getSessionUser() {
     let user = JSON.parse(sessionStorage.getItem('user') || '{}');
     return user;
+  }
+
+  /**
+   * check authentication
+   * @returns isAuthenticated
+   */
+  checkAuthentication(): boolean {
+    let userDetails = this.getSessionUser();
+
+    if (userDetails && Object.keys(userDetails)?.length > 0) {
+      this.isAuthenticated = true;
+      return true;
+    } 
+    else {
+      this.isAuthenticated = false;
+      this.router.navigateByUrl('/auth');
+      return false;
+    }
+  }
+
+  /**
+   * checking if loggedIn User is Admin
+   * @returns isAdmin
+   */
+  isAdmin(): boolean {
+    let userDetails = this.getSessionUser();
+
+    if (userDetails && Object.keys(userDetails)?.length > 0 && userDetails.role == "admin") {
+      return true;
+    } 
+    else {
+      return false;
+    }
+  }
+
+  /**
+   * Get User Role
+   * @returns role
+   */
+  getRole() {
+    let userDetails = this.getSessionUser();
+
+    if (userDetails && Object.keys(userDetails)?.length > 0) {
+      return userDetails.role;
+    }
   }
 }

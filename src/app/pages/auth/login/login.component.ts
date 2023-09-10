@@ -23,7 +23,11 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: ['admin@gmail.com', [Validators.required]],
       password: ['12345', [Validators.required]]
-    }) 
+    })
+
+    if (this.authService.checkAuthentication()) {
+      this.router.navigateByUrl('/products');
+    }
   }
 
   submitLogin() {
@@ -33,6 +37,7 @@ export class LoginComponent implements OnInit {
       let userDetails = res.find((u: User) => u?.email == payload.email && u?.password == payload.password);
       
       if (userDetails && Object.keys(userDetails)?.length > 0) {
+        this.authService.isAuthenticated = true;
         this.authService.setUserSession(userDetails);
         this.router.navigateByUrl('/products');
       } else {
