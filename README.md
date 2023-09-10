@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
+# DEMO APP - Deployed on Vercel
+https://store-angular-app.vercel.app/auth
+
 # Angular Upgrade Guide 
 https://update.angular.io/
 
