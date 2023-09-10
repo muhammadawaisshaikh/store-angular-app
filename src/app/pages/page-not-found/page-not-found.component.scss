@@ -1,0 +1,16 @@
+.p-n-f {
+    padding-top: 5rem;
+    height: 100vh;
+    img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 100%;
+        display: block;
+        margin: auto;
+    }
+    h1 {
+        padding-top: 1rem;
+        text-align: center;
+    }
+}
