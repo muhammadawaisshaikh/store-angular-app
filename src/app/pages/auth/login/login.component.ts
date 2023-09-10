@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { User } from '../auth.model';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/enums/role.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
         
         this.rolebasedRoute();
       } else {
-        alert('User not Exist!')
+        this._snackBar.open('User not Exist!', 'close');
       }
     })
   }

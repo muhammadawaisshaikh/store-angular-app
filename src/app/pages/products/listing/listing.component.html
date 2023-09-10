@@ -1,4 +1,8 @@
 <div class="mat-elevation-z8 listing">
+    <button class="add-product" mat-fab extended color="primary" aria-label="Add Product" routerLink="/products/add-edit-product">
+        <mat-icon>add</mat-icon> Product
+    </button>
+
     <table mat-table [dataSource]="dataSource">
         <!-- id Column -->
         <ng-container matColumnDef="id">
@@ -42,10 +46,10 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell class="actions" *matCellDef="let element"> 
-                <button mat-mini-fab color="primary" aria-label="Edit">
+                <button mat-mini-fab color="primary" aria-label="Edit" routerLink="/products/add-edit-product" [state]="{ data: element }">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-mini-fab color="warn" aria-label="Delete">
+                <button mat-mini-fab color="warn" aria-label="Delete" (click)="deleteProduct(element.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>

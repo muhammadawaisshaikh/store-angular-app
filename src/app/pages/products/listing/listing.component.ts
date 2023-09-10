@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listing',
@@ -17,7 +18,8 @@ export class ListingComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>([]);
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngAfterViewInit() {
@@ -25,9 +27,19 @@ export class ListingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
     this.productsService.getProducts().subscribe((res: any) => {
-      console.log(res);
       this.dataSource = res;
     })
+  }
+
+  deleteProduct(id: number) {
+    this.productsService.deleteProduct(id).subscribe(res => {
+      this._snackBar.open('Product Deleted!', 'close');
+      this.getProducts();
+    });
   }
 }

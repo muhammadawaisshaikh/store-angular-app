@@ -1,1 +1,35 @@
-<p>add-edit-product works!</p>
+<div fxLayout="row" fxLayoutAlign="center" class="product-form">
+    <div fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="90" fxFlex.xs="90">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{isEdit ? 'Edit' : 'Add'}} Product</mat-card-title>
+            </mat-card-header>
+    
+            <form [formGroup]="addEditForm" novalidate>
+                <mat-card-content fxLayout="column">
+                    <mat-form-field>
+                        <input matInput placeholder="Title" formControlName="title">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Price" formControlName="price">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Category" formControlName="category">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Description" formControlName="description">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="http://www.imgbb.com/image.png" formControlName="image">
+                    </mat-form-field>
+                </mat-card-content>
+                
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" [disabled]="addEditForm.status === 'INVALID'" *ngIf="!isEdit" (click)="addProduct()">Add Product</button>
+                    <button mat-raised-button color="primary" [disabled]="addEditForm.status === 'INVALID'" *ngIf="isEdit" (click)="editProduct()">Update Product</button>
+                    <button mat-raised-button color="secondary" routerLink="/">Cancel</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>
