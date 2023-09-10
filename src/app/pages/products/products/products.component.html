@@ -1,4 +1,16 @@
 <div class="mat-elevation-z8 products">
+    <div class="categories">
+        <mat-chip-listbox aria-label="Category Selection">
+            <mat-chip-option *ngFor="let category of categories" (click)="productByCategory(category)">{{category}}</mat-chip-option>
+            <mat-chip-option (click)="getProducts()">
+                Reset Filter
+                <button matChipRemove [attr.aria-label]="'remove'">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+            </mat-chip-option>
+          </mat-chip-listbox>
+    </div>
+
     <div fxLayout="row wrap" fxLayoutAlign="center">
         <div fxFlex="25%" *ngFor="let item of data">
             <mat-card class="product-card">

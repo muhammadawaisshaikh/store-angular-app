@@ -54,4 +54,22 @@ export class ProductsService {
     return this.http.delete(endpoint, this.httpOptions);
   }
 
+  /**
+   * Get List of Categories from API
+   * @returns observable of Categories api response
+   */
+  getCategories() {
+    let endpoint = `${environment.API_BASE_URL}/products/categories`;
+    return this.http.get(endpoint, this.httpOptions);
+  }
+
+  /**
+   * Get List of Products by Categoryfrom API
+   * @returns observable of products from categoriesapi response
+   */
+  getProductsByCategory(category: string) {
+    let endpoint = `${environment.API_BASE_URL}/products/category/${category}`;
+    return this.http.get(endpoint, this.httpOptions);
+  }
+
 }

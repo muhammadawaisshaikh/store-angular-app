@@ -1,5 +1,8 @@
 .products {
     padding: 30px;
+    .categories {
+        padding-bottom: 20px;
+    }
     mat-card {
         margin: 10px;
         mat-card-title {

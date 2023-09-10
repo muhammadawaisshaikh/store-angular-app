@@ -32,7 +32,8 @@ export class ListingComponent implements OnInit {
 
   getProducts() {
     this.productsService.getProducts().subscribe((res: any) => {
-      this.dataSource = res;
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
