@@ -1,6 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './pages/auth/auth.service';
+import { Role } from './enums/role.enum';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,7 @@ export class AppComponent {
     },
     {
       name: 'Products',
-      path: '/products'
+      path: this.authService.getRole() == Role.Admin ? '/products/listing' : '/'
     },
   ]
 
@@ -26,7 +28,8 @@ export class AppComponent {
 
   constructor(
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();

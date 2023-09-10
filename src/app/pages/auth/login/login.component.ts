@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     })
 
     if (this.authService.checkAuthentication()) {
-      this.router.navigateByUrl('/products');
+      this.rolebasedRoute();
     }
   }
 
@@ -41,18 +41,21 @@ export class LoginComponent implements OnInit {
         this.authService.isAuthenticated = true;
         this.authService.setUserSession(userDetails);
         
-        let userRole = this.authService.getSessionUser().role;
-
-        if (userRole == Role.Admin) {
-          this.router.navigateByUrl('/products/listing');
-        } else {
-          this.router.navigateByUrl('/products');
-        }
-
+        this.rolebasedRoute();
       } else {
         alert('User not Exist!')
       }
     })
+  }
+
+  rolebasedRoute() {
+    let userRole = this.authService.getSessionUser().role;
+
+    if (userRole == Role.Admin) {
+      this.router.navigateByUrl('/products/listing');
+    } else {
+      this.router.navigateByUrl('/products');
+    }
   }
 
 }
