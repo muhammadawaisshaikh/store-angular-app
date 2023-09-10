@@ -26,24 +26,16 @@ export class AddEditProductComponent {
   ) { }
 
   ngOnInit(): void {
+    this.formInit();
+
     this.route.paramMap.pipe(map(() => window.history.state)).subscribe(res => {
       this.data = res.data;
-      console.log(this.data);
       
       if (this.data && Object.keys(this.data).length > 0) {
         this.isEdit = true;
-
-        this.addEditForm.patchValue({
-          title: this.data.title,
-          price: this.data.price,
-          category: this.data.category,
-          description: this.data.description,
-          image: this.data.image
-        });
+        this.addEditForm.patchValue(this.data);
       }
     });
-
-    this.formInit();
   }
 
   formInit() {
