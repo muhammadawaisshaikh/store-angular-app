@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { User } from '../auth.model';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/enums/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,15 @@ export class LoginComponent implements OnInit {
       if (userDetails && Object.keys(userDetails)?.length > 0) {
         this.authService.isAuthenticated = true;
         this.authService.setUserSession(userDetails);
-        this.router.navigateByUrl('/products');
+        
+        let userRole = this.authService.getSessionUser().role;
+
+        if (userRole == Role.Admin) {
+          this.router.navigateByUrl('/products/listing');
+        } else {
+          this.router.navigateByUrl('/products');
+        }
+
       } else {
         alert('User not Exist!')
       }

@@ -15,3 +15,10 @@ https://material.angular.io/guide/getting-started
 https://tburleson-layouts-demos.firebaseapp.com/
 https://github.com/angular/flex-layout
 
+# User Credentials
+
+johndoe@gmail.com
+12345
+
+admin@gmail.com
+12345
