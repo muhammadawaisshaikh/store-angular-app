@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_BASE_URL: 'https://fakestoreapi.com',
-  AUTH_BASE_URL: 'http://demo1416688.mockable.io'
+  AUTH_BASE_URL: 'https://demo1416688.mockable.io'
 };
 
 /*
