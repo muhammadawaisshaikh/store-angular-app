@@ -38,6 +38,11 @@ export class AppComponent {
     snav.toggle()
   }
 
+  logout() {
+    sessionStorage.clear();
+    window.location.reload();
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
