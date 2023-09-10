@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
 
@@ -9,7 +9,7 @@ import { ProductsService } from '../products.service';
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss']
 })
-export class ListingComponent implements OnInit{
+export class ListingComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
@@ -18,7 +18,7 @@ export class ListingComponent implements OnInit{
 
   constructor(
     private productsService: ProductsService
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
