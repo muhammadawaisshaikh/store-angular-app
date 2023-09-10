@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { Product } from '../product.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -22,11 +23,9 @@ export class ProductsComponent implements OnInit{
       this.data = this.data.map((i: Product) => {
         return {
           ...i,
-          description: `${i.description.substring(0, 60)}...`
+          truncatedDescription: `${i.description.substring(0, 60)}...`
         }
       });
-
-      console.log(res);
     })
   }
 
