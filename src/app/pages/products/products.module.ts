@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/shared/material.module';
+
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ListingComponent } from './listing/listing.component';
@@ -17,7 +20,9 @@ import { DetailsComponent } from './details/details.component';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    SharedModule,
+    MaterialModule
   ]
 })
 export class ProductsModule { }
